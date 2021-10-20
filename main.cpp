@@ -28,3 +28,24 @@
 //*****************************************************************************
 // Prototipos de funciones
 //*****************************************************************************
+
+//*****************************************************************************
+// Variables Globales
+//*****************************************************************************
+// Create An LCD Object. Signals: [ RS, EN, D4, D5, D6, D7 ]
+LiquidCrystal LCD(rs, en, d4, d5, d6, d7);
+
+int adcRaw;
+int voltaje; //Voltaje para el primer potenciómetro
+int Potenciometro2=0;
+int ContadorBoton1=0;
+
+long LastTime;
+long SampleTime = 250;
+
+long LastTime2;
+long SampleTime2 = 250;
+
+long LastTime3;
+long SampleTime3 = 250;
+
