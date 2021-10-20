@@ -78,3 +78,30 @@ void loop() {
       if (Serial2.read()== '\t' ){
       ContadorBoton1 = Serial2.read();  
       }
+
+          else if(Serial2.read() == '\n'){
+      Potenciometro2 = Serial2.read();
+      }
+    }
+
+    LastTime2=millis();
+  }
+  if (millis()-LastTime >= SampleTime){
+  //Asignando lo que tiene que decir la pantalla LCD
+  LCD.clear();
+  LCD.print("Rojo:");
+  LCD.print("");
+  LCD.print("Azul:");
+  LCD.print("");
+  LCD.print("Verde:");
+
+  LCD.setCursor(1,1);
+  LCD.print(voltaje);
+  LCD.print("  ");
+  LCD.print(Potenciometro2);
+  LCD.print("   ");
+  LCD.print(ContadorBoton1);
+
+  LastTime=millis();
+  }
+}
