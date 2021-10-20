@@ -37,9 +37,10 @@ LiquidCrystal LCD(rs, en, d4, d5, d6, d7);
 
 int adcRaw;
 int voltaje; //Voltaje para el primer potenciómetro
-int Potenciometro2=0;
-int ContadorBoton1=0;
+int Potenciometro2=0; //Potenciometro
+int ContadorBoton1=0; //Contador
 
+//Tiempos de muestra para los colores
 long LastTime;
 long SampleTime = 250;
 
@@ -59,7 +60,7 @@ void setup() {
   LCD.begin(16, 2); //Pantalla LCD 16*2
   // Clears The LCD Display
 
-  LastTime = millis();
+  LastTime = millis(); //Medicion del tiempo
 
 }
 
@@ -67,10 +68,10 @@ void setup() {
 // Loop Principal
 //*****************************************************************************
 void loop() {
+  //Configurando los tiempos de muestra
   if (millis()-LastTime2 >= SampleTime2){
-    //Asignando los valores del voltaje, decenas, unidades y decimales
     voltaje = analogReadMilliVolts(pot1) / 10.0; //Voltaje para el potenciómetro 
-    voltaje = (voltaje, 0,3300,0,255);
+    voltaje = (voltaje, 0,3300,0,255); //Convirtiendo los valores del potenciómetro
     //Imprimiendo voltaje 
     Serial2.write(voltaje);
     //Serial2.write("\t");
@@ -94,7 +95,7 @@ void loop() {
   LCD.print("Azul:");
   LCD.print("");
   LCD.print("Verde:");
-
+  //Asignando lo que tiene que ir acompañado junto a cada color
   LCD.setCursor(1,1);
   LCD.print(voltaje);
   LCD.print("  ");
@@ -105,3 +106,4 @@ void loop() {
   LastTime=millis();
   }
 }
+//FIN DEL CÓDIGO
