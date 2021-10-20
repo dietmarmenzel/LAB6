@@ -62,3 +62,19 @@ void setup() {
   LastTime = millis();
 
 }
+
+//*****************************************************************************
+// Loop Principal
+//*****************************************************************************
+void loop() {
+  if (millis()-LastTime2 >= SampleTime2){
+    //Asignando los valores del voltaje, decenas, unidades y decimales
+    voltaje = analogReadMilliVolts(pot1) / 10.0; //Voltaje para el potenciómetro 
+    voltaje = (voltaje, 0,3300,0,255);
+    //Imprimiendo voltaje 
+    Serial2.write(voltaje);
+    //Serial2.write("\t");
+    if (Serial2.available()>=0){
+      if (Serial2.read()== '\t' ){
+      ContadorBoton1 = Serial2.read();  
+      }
